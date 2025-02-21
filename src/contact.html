@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>Contact Us</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        background-color: #f0f4f8;
+      }
+
+      nav {
+        position: fixed;
+        width: 100%;
+        background-color: rgba(255, 255, 255, 0.8);
+        padding: 1rem;
+        top: 0;
+        left: 0;
+        display: flex;
+        justify-content: space-between;
+        backdrop-filter: blur(10px);
+        z-index: 10;
+      }
+
+      nav a {
+        color: black;
+        text-decoration: none;
+        font-size: 1.2rem;
+      }
+
+      .navbar {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 1rem;
+        width: 100%;
+      }
+
+      .navbar ul {
+        list-style: none;
+        display: flex;
+        align-items: center;
+        margin: 0;
+        padding: 0;
+      }
+
+      .navbar li {
+        margin-right: 20px;
+      }
+
+      .navbar li:first-child {
+        margin-right: auto;
+      }
+
+      .navbar a {
+        text-decoration: none;
+        color: #333;
+        font-size: 18px;
+        padding: 10px;
+        transition: color 0.3s;
+      }
+
+      .navbar a:hover {
+        color: #007bff;
+      }
+
+      .nav-image {
+        width: 150px;
+        height: auto;
+      }
+
+      .contact-section {
+        padding: 4rem;
+        background-color: #444;
+        color: white;
+        text-align: center;
+      }
+
+      .contact-section h1 {
+        font-size: 3.5rem;
+        margin-bottom: 1rem;
+      }
+
+      .contact-section p {
+        font-size: 1.3rem;
+        margin-bottom: 2rem;
+      }
+
+      .footer {
+        background-color: #263238;
+        color: white;
+        padding: 2rem;
+        display: flex;
+        justify-content: space-between;
+      }
+
+      .footer div {
+        width: 30%;
+      }
+    </style>
+  </head>
+  <body>
+    <nav class="navbar">
+      <ul>
+        <li>
+          <img src="KONDOREK_logo_colored.png" alt="Logo" class="nav-image" />
+        </li>
+        <li><a href="site.html">Home</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="services.html">Services</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+    </nav>
+
+
+    <section class="contact-section">
+      <h1>Contact Us</h1>
+      <p>We'd love to hear from you! Get in touch with us for more information.</p>
+    </section>
+
+    <footer class="footer">
+      <div>
+        <h3>Navigation</h3>
+        <ul>
+          <li><a href="about.html">About</a></li>
+          <li><a href="services.html">Services</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </div>
+      <div>
+        <h3>Our Services</h3>
+        <p>
+          Explore our wide range of services and find the perfect fit for your
+          needs.
+        </p>
+      </div>
+      <div>
+        <h3>Contact Us</h3>
+        <p>Company Name</p>
+        <p>Email: contact@company.com</p>
+        <p>Phone: +123 456 7890</p>
+      </div>
+    </footer>
+  </body>
+</html>
