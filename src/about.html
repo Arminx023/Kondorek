@@ -7,11 +7,12 @@
     <title>About Us</title>
     <style>
       body {
-        font-family: Arial, sans-serif;
+        font-family: 'Arial', sans-serif;
         margin: 0;
         padding: 0;
         box-sizing: border-box;
-        background-color: #f0f4f8;
+        background: linear-gradient(135deg, #e0e7ef 0%, #b0c4de 100%);
+        color: #333;
       }
 
       nav {
@@ -75,79 +76,85 @@
       }
 
       .hero-section {
-        padding: 4rem;
-        background-color: #444;
+        padding: 6rem 2rem;
+        background: linear-gradient(180deg, #4682b4 0%, #2f4f4f 100%);
         color: white;
         text-align: center;
+        min-height: 100vh;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
       }
 
       .hero-section h1 {
-        font-size: 3.5rem;
-        margin-bottom: 1rem;
+        font-size: 3rem;
+        margin-bottom: 1.5rem;
+        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
       }
 
       .hero-section p {
-        font-size: 1.3rem;
+        font-size: 1.5rem;
+        margin-bottom: 2rem;
+        max-width: 800px;
+      }
+
+      .hungarian-text {
+        font-size: 1.2rem;
+        font-style: italic;
+        color: #e0e7ef;
         margin-bottom: 2rem;
       }
 
       .footer {
-        background-color: #263238;
-        color: white;
-        padding: 2rem;
-        display: flex;
-        justify-content: space-between;
+        background: #2f4f4f;
+        color: #e0e7ef;
+        padding: 3rem 2rem;
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 2rem;
+        text-align: center;
       }
 
-      .footer div {
-        width: 30%;
+      .footer h3 {
+        font-size: 1.5rem;
+        margin-bottom: 1rem;
+        color: #fff;
+      }
+
+      .footer a {
+        color: #b0c4de;
+        text-decoration: none;
+        transition: color 0.3s;
+      }
+
+      .footer a:hover {
+        color: #fff;
       }
     </style>
   </head>
   <body>
     <nav class="navbar">
       <ul>
-        <li>
-          <img src="KONDOREK_logo_colored.png" alt="Logo" class="nav-image" />
-        </li>
-        <li><a href="site.html">Home</a></li>
-        <li><a href="about.html">About</a></li>
-        <li><a href="services.html">Services</a></li>
-        <li><a href="contact.html">Contact</a></li>
+        <li><img src="KONDOREK_logo_colored.png" alt="Logo" class="nav-image" /></li>
+        <li><a href="site.html">Főoldal</a></li>
+        <li><a href="about.html">Rólunk</a></li>
+        <li><a href="services.html">Szolgáltatások</a></li>
+        <li><a href="contact.html">Vélemények</a></li>
       </ul>
     </nav>
 
-
     <section class="hero-section">
       <h1>About Us</h1>
-      <p>
-        We are a leading company in delivering high-quality services to our clients.
-        Our team is dedicated to providing the best solutions for businesses.
-      </p>
+      <p>We are a leading company in delivering high-quality services to our clients. Our team is dedicated to providing the best solutions for businesses.</p>
+      <p class="hungarian-text">Az Ön véleménye és visszajelzése fontos számunkra!</p>
     </section>
 
     <footer class="footer">
       <div>
-        <h3>Navigation</h3>
-        <ul>
-          <li><a href="about.html">About</a></li>
-          <li><a href="services.html">Services</a></li>
-          <li><a href="contact.html">Contact</a></li>
-        </ul>
-      </div>
-      <div>
-        <h3>Our Services</h3>
-        <p>
-          Explore our wide range of services and find the perfect fit for your
-          needs.
-        </p>
-      </div>
-      <div>
-        <h3>Contact Us</h3>
-        <p>Company Name</p>
-        <p>Email: contact@company.com</p>
-        <p>Phone: +123 456 7890</p>
+        <h3>Kapcsolat</h3>
+        <p>Kondorék</p>
+        <p>Email: valter97@gmail.com</p>
+        <p>Phone: +36305624738</p>
       </div>
     </footer>
-  </body>
-</html>

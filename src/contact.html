@@ -7,11 +7,12 @@
     <title>Contact Us</title>
     <style>
       body {
-        font-family: Arial, sans-serif;
+        font-family: 'Arial', sans-serif;
         margin: 0;
         padding: 0;
         box-sizing: border-box;
-        background-color: #f0f4f8;
+        background: linear-gradient(135deg, #e0e7ef 0%, #b0c4de 100%); /* Grey to light blue gradient */
+        color: #333;
       }
 
       nav {
@@ -74,77 +75,176 @@
         height: auto;
       }
 
+      /* Modern Contact Section */
       .contact-section {
-        padding: 4rem;
-        background-color: #444;
+        padding: 6rem 2rem;
+        background: linear-gradient(180deg, #4682b4 0%, #2f4f4f 100%); /* Blue to dark grey-blue */
         color: white;
         text-align: center;
+        min-height: 100vh;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
       }
 
       .contact-section h1 {
-        font-size: 3.5rem;
-        margin-bottom: 1rem;
+        font-size: 3rem;
+        margin-bottom: 1.5rem;
+        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
       }
 
       .contact-section p {
-        font-size: 1.3rem;
+        font-size: 1.5rem;
+        margin-bottom: 2rem;
+        max-width: 800px;
+      }
+
+      .hungarian-text {
+        font-size: 1.2rem;
+        font-style: italic;
+        color: #e0e7ef;
         margin-bottom: 2rem;
       }
 
-      .footer {
-        background-color: #263238;
-        color: white;
-        padding: 2rem;
-        display: flex;
-        justify-content: space-between;
+      /* Highlighted Review Scroller */
+      .review-scroller {
+        width: 100%;
+        max-width: 700px; /* Slightly wider for emphasis */
+        height: 400px; /* Taller to showcase more reviews */
+        overflow: hidden;
+        position: relative;
+        background: rgba(255, 255, 255, 0.1);
+        border-radius: 15px;
+        box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+        padding: 10px;
       }
 
-      .footer div {
-        width: 30%;
+      .reviews {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+      }
+
+      .reviews img {
+        width: 100%;
+        height: auto;
+        margin-bottom: 15px;
+        border-radius: 10px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      }
+
+      /* Modern Footer */
+      .footer {
+        background: #2f4f4f; /* Dark grey-blue */
+        color: #e0e7ef;
+        padding: 3rem 2rem;
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 2rem;
+        text-align: center;
+      }
+
+      .footer h3 {
+        font-size: 1.5rem;
+        margin-bottom: 1rem;
+        color: #fff;
+      }
+
+      .footer a {
+        color: #b0c4de;
+        text-decoration: none;
+        transition: color 0.3s;
+      }
+
+      .footer a:hover {
+        color: #fff;
+      }
+
+      .footer p {
+        font-size: 1rem;
+        line-height: 1.6;
       }
     </style>
   </head>
   <body>
     <nav class="navbar">
       <ul>
-        <li>
-          <img src="KONDOREK_logo_colored.png" alt="Logo" class="nav-image" />
-        </li>
-        <li><a href="site.html">Home</a></li>
-        <li><a href="about.html">About</a></li>
-        <li><a href="services.html">Services</a></li>
-        <li><a href="contact.html">Contact</a></li>
+        <li><img src="KONDOREK_logo_colored.png" alt="Logo" class="nav-image" /></li>
+        <li><a href="site.html">Főoldal</a></li>
+        <li><a href="about.html">Rólunk</a></li>
+        <li><a href="services.html">Szolgáltatások</a></li>
+        <li><a href="contact.html">Vélemények</a></li>
       </ul>
     </nav>
 
-
     <section class="contact-section">
-      <h1>Contact Us</h1>
-      <p>We'd love to hear from you! Get in touch with us for more information.</p>
+      <p class="hungarian-text">Az Ön véleménye és visszajelzése fontos számunkra!</p>
+      <div class="review-scroller">
+        <div class="reviews" id="reviews"></div>
+      </div>
     </section>
 
     <footer class="footer">
       <div>
-        <h3>Navigation</h3>
-        <ul>
-          <li><a href="about.html">About</a></li>
-          <li><a href="services.html">Services</a></li>
-          <li><a href="contact.html">Contact</a></li>
-        </ul>
-      </div>
-      <div>
-        <h3>Our Services</h3>
-        <p>
-          Explore our wide range of services and find the perfect fit for your
-          needs.
-        </p>
-      </div>
-      <div>
-        <h3>Contact Us</h3>
-        <p>Company Name</p>
-        <p>Email: contact@company.com</p>
-        <p>Phone: +123 456 7890</p>
+        <h3>Kapcsolat</h3>
+        <p>Kondorék</p>
+        <p>Email: valter97@gmail.com</p>
+        <p>Phone: +36305624738</p>
       </div>
     </footer>
+
+
+    <script>
+      const reviewContainer = document.getElementById('reviews');
+      const scroller = document.querySelector('.review-scroller');
+      const totalReviews = 19;
+      let position = 0;
+      let speed =  0.5; // Adjusted for a slightly faster scroll
+      let animationFrameId;
+
+      function loadReviews() {
+        for (let i = 1; i <= totalReviews; i++) {
+          const img = document.createElement('img');
+          img.src = `${i}.png`;
+          img.alt = `Review ${i}`;
+          reviewContainer.appendChild(img);
+        }
+        const images = reviewContainer.querySelectorAll('img');
+        images.forEach(img => {
+          const clone = img.cloneNode(true);
+          reviewContainer.appendChild(clone);
+        });
+      }
+
+      function scrollReviews() {
+        position -= speed;
+        reviewContainer.style.transform = `translateY(${position}px)`;
+        const containerHeight = scroller.offsetHeight;
+        const contentHeight = reviewContainer.offsetHeight / 2;
+        if (Math.abs(position) >= contentHeight) {
+          position = 0;
+        }
+        animationFrameId = requestAnimationFrame(scrollReviews);
+      }
+
+      function startScrolling() {
+        loadReviews();
+        animationFrameId = requestAnimationFrame(scrollReviews);
+      }
+
+      scroller.addEventListener('mouseenter', () => {
+        cancelAnimationFrame(animationFrameId);
+      });
+
+      scroller.addEventListener('mouseleave', () => {
+        animationFrameId = requestAnimationFrame(scrollReviews);
+      });
+
+      startScrolling();
+    </script>
   </body>
 </html>

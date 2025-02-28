@@ -7,11 +7,12 @@
     <title>Our Services</title>
     <style>
       body {
-        font-family: Arial, sans-serif;
+        font-family: "Arial", sans-serif;
         margin: 0;
         padding: 0;
         box-sizing: border-box;
-        background-color: #f0f4f8;
+        background: linear-gradient(135deg, #e0e7ef 0%, #b0c4de 100%);
+        color: #333;
       }
 
       nav {
@@ -74,103 +75,116 @@
       }
 
       .hero-section {
-        background-color: #444;
+        padding: 6rem 2rem;
+        background: linear-gradient(180deg, #4682b4 0%, #2f4f4f 100%);
         color: white;
         text-align: center;
-        padding: 4rem;
+        min-height: 50vh;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
       }
 
       .hero-section h1 {
-        font-size: 3.5rem;
-        margin-bottom: 1rem;
-        color: #f4c542;
+        font-size: 3rem;
+        margin-bottom: 1.5rem;
+        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
       }
 
       .hero-section p {
-        font-size: 1.3rem;
+        font-size: 1.5rem;
         margin-bottom: 2rem;
       }
 
       .service-cards {
-        display: flex;
-        justify-content: center;
-        padding: 2rem;
-        background-color: #e0f7fa;
-        flex-wrap: wrap;
-        gap: 2rem;
-        align-items: stretch; /* Ensures cards have the same height */
+        padding: 4rem 2rem;
+        background: #fff;
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+        gap: 2.5rem;
+        max-width: 1400px;
+        margin: 0 auto;
       }
 
       .service-card {
-        background-color: white;
+        background: linear-gradient(135deg, #ffffff 0%, #f8f9fa 100%);
         padding: 2rem;
-        border-radius: 8px;
-        width: 45%;
-        max-width: 600px;
-        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-        transition: transform 0.3s ease-in-out;
-        margin: 20px;
+        border-radius: 15px;
+        box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+        border: 1px solid #e0e7ef;
+        transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
         display: flex;
         flex-direction: column;
-        justify-content: space-between;
         align-items: center;
-        height: 100%; /* Makes sure the cards take the same height */
-        min-height: 250px; /* Sets a minimum height to ensure consistent size */
-        overflow: hidden; /* Prevents overflow issues */
-      }
-
-      .service-card p {
-        color: #333;
-        font-size: 1.1rem;
-        margin-bottom: 1rem;
-        max-height: 150px; /* Limits the text box height */
-        overflow: auto; /* Allows scrolling if text overflows */
-      }
-
-      .service-card img {
-        width: 100%;
-        height: auto;
-        object-fit: cover;
-        border-radius: 8px;
-        margin-bottom: 1rem; /* Adds space between the image and text */
+        overflow: hidden;
       }
 
       .service-card:hover {
-        transform: scale(1.05);
+        transform: translateY(-5px);
+        box-shadow: 0 12px 24px rgba(0, 0, 0, 0.15);
       }
 
       .service-card h2 {
         color: #007bff;
-        margin-bottom: 1rem; /* Adds space between the heading and content */
+        font-size: 1.8rem;
+        margin-bottom: 1.5rem;
         text-align: center;
+        text-transform: uppercase;
+        letter-spacing: 1px;
       }
 
-      .footer {
-        background-color: #263238;
-        color: white;
-        padding: 2rem;
-        display: flex;
-        justify-content: space-between;
+      .service-card p {
+        font-size: 1.1rem;
+        line-height: 1.7;
+        color: #555;
+        margin-bottom: 1.5rem;
+        text-align: justify;
       }
 
-      .footer div {
-        width: 30%;
+      .service-card ul {
+        list-style: none;
+        padding: 0;
+        font-size: 1rem;
+        line-height: 1.8;
+        color: #666;
+        margin-bottom: 2rem;
+        width: 100%;
+      }
+
+      .service-card ul li {
+        margin-bottom: 12px;
+        padding-left: 25px;
+        position: relative;
+        transition: color 0.3s;
+      }
+
+      .service-card ul li:hover {
+        color: #007bff;
+      }
+
+      .service-card ul li::before {
+        content: "✔";
+        color: #007bff;
+        font-size: 1.2rem;
+        position: absolute;
+        left: 0;
+        top: 2px;
       }
 
       .image-gallery {
-        display: flex;
-        justify-content: center;
-        align-items: center;
+        width: 100%;
+        max-width: 400px;
+        height: 250px;
         overflow: hidden;
         position: relative;
-        width: 80%; /* Controls the width of the carousel */
-        max-width: 600px; /* Ensures it doesn't stretch too wide */
-        height: 400px;
-        margin: 0 auto;
-        padding: 1rem;
         border-radius: 12px;
-        background-color: #fff;
-        box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
+        box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+        background: rgba(0, 0, 0, 0.05);
+        transition: transform 0.3s ease-in-out;
+      }
+
+      .image-gallery:hover {
+        transform: scale(1.02);
       }
 
       .image-gallery img {
@@ -178,74 +192,94 @@
         width: 100%;
         height: 100%;
         object-fit: cover;
-        border-radius: 8px;
-        transition: transform 0.3s, opacity 0.3s;
+        transition: opacity 0.5s ease-in-out, transform 0.5s ease-in-out;
         opacity: 0;
-        transform: scale(0.8);
       }
 
       .image-gallery img.active {
         opacity: 1;
-        transform: scale(1.1);
+        transform: scale(1.05);
+      }
+
+      .image-gallery::after {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(
+          to bottom,
+          rgba(0, 0, 0, 0.1),
+          rgba(0, 0, 0, 0.3)
+        );
+        border-radius: 12px;
+        pointer-events: none;
       }
 
       .image-gallery button {
         position: absolute;
         top: 50%;
         transform: translateY(-50%);
-        background: rgba(0, 0, 0, 0.6);
+        background: rgba(0, 0, 0, 0.7);
         color: white;
         border: none;
-        padding: 15px;
-        font-size: 2rem;
+        padding: 12px;
+        font-size: 1.8rem;
         cursor: pointer;
         border-radius: 50%;
-        transition: background 0.3s;
+        transition: background 0.3s, transform 0.3s;
+        z-index: 2;
       }
 
       .image-gallery button:hover {
-        background: rgba(0, 0, 0, 0.8);
+        background: rgba(0, 0, 0, 0.9);
+        transform: translateY(-50%) scale(1.1);
       }
 
       .image-gallery button.left {
-        left: 10px;
+        left: 15px;
       }
 
       .image-gallery button.right {
-        right: 10px;
+        right: 15px;
       }
 
-      .service-card ul {
-        list-style: none;
-        padding: 0;
-        font-size: 1.1rem;
-        line-height: 1.8;
-        color: #555;
-        margin-bottom: 1rem;
+      .footer {
+        background: #2f4f4f;
+        color: #e0e7ef;
+        padding: 3rem 2rem;
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 2rem;
+        text-align: center;
       }
 
-      .service-card ul li {
-        margin-bottom: 10px;
-        position: relative;
-        padding-left: 20px;
-      }
-
-      .service-card ul li::before {
-        content: "✔";
-        color: #007bff;
-        position: absolute;
-        left: 0;
-        top: 0;
-      }
-
-      /* Footer Text Styling */
       .footer h3 {
+        font-size: 1.5rem;
+        margin-bottom: 1rem;
         color: #fff;
-        margin-bottom: 10px;
       }
 
-      .footer p {
-        font-size: 1rem;
+      .footer a {
+        color: #b0c4de;
+        text-decoration: none;
+        transition: color 0.3s;
+      }
+
+      .footer a:hover {
+        color: #fff;
+      }
+
+      @media (max-width: 768px) {
+        .service-card h2 {
+          font-size: 1.5rem;
+        }
+
+        .image-gallery {
+          max-width: 100%;
+          height: 200px;
+        }
       }
     </style>
   </head>
@@ -255,137 +289,128 @@
         <li>
           <img src="KONDOREK_logo_colored.png" alt="Logo" class="nav-image" />
         </li>
-        <li><a href="site.html">Home</a></li>
-        <li><a href="about.html">About</a></li>
-        <li><a href="services.html">Services</a></li>
-        <li><a href="contact.html">Contact</a></li>
+        <li><a href="site.html">Főoldal</a></li>
+        <li><a href="about.html">Rólunk</a></li>
+        <li><a href="services.html">Szolgáltatások</a></li>
+        <li><a href="contact.html">Vélemények</a></li>
       </ul>
     </nav>
 
     <div class="hero-section">
       <h1>Szolgáltatásaink</h1>
-      <!-- Translated to Hungarian -->
       <p>Magas minőségű szobafestés, tapétázás és egyéb szolgáltatások!</p>
     </div>
 
     <section class="service-cards">
-      <!-- Szobafestés, glettelési munkák section -->
       <div class="service-card">
         <h2>Szobafestés, glettelési munkák</h2>
         <p>
           A szobafestés sokkal több, mint egy szimpla felújítási munka; ez egy
           lehetőség arra, hogy új életet leheljünk otthona, irodája vagy ipari
-          létesítménye falai közé. A megfelelő szín és stílus kiválasztása
-          kulcsfontosságú lehet a tér átalakításában. Legyen szó otthoni
-          környezet kialakításáról, egy produktív irodai tér megteremtéséről,
-          vagy egy ipari létesítmény esztétikai és funkcionális megújításáról,
-          szakértelmünk garantálja, hogy minden projekt sikeres legyen.
+          létesítménye falai közé.
         </p>
         <ul>
-          <li>
-            Vállaljuk lakások, házak, irodák és üzlethelyiségek festését,
-            bármilyen méretű projekthez alkalmazkodva.
-          </li>
-          <li>
-            Ingyenes helyszíni felmérést és árajánlatot biztosítunk, hogy Ön
-            pontos képet kapjon a várható költségekről és időtartamról.
-          </li>
-          <li>
-            Környezetbarát festékek használatával óvjuk az egészségét és a
-            környezetet, miközben gyönyörű színekkel díszítjük otthonát.
-          </li>
-          <li>
-            Csapatunk gyorsan és hatékonyan dolgozik, hogy minimálisra
-            csökkentse a munka okozta kellemetlenségeket.
-          </li>
+          <p>Tisztasági festés előnyei:</p>
+          <li>Megújult Környezet: Friss, tiszta és vonzó falak.</li>
+          <li>Értéknövelés: Növeli az ingatlan piaci értékét.</li>
+          <li>Egészségvédelem: Eltávolítja a penészt és szennyeződéseket.</li>
+          <li>Egyéni Stílus: Személyre szabott színek és minták.</li>
+          <li>Védőréteg: Véd a kopástól és időjárási károktól.</li>
         </ul>
-
-        <!-- Image carousel for the section -->
         <div class="image-gallery" id="carousel1">
           <img src="fest1.jpg" alt="Festés 1" class="active" />
           <img src="fest2.jpg" alt="Festés 2" />
           <img src="fest3.jpg" alt="Festés 3" />
           <button class="left" onclick="moveCarousel(-1, 'carousel1')">
-            &#10094;
+            ❮
           </button>
           <button class="right" onclick="moveCarousel(1, 'carousel1')">
-            &#10095;
+            ❯
           </button>
         </div>
       </div>
 
-      <!-- Tapétázás section -->
       <div class="service-card">
         <h2>Tapétázás</h2>
         <p>
-          A lakberendezési trendek folyamatosan változnak, és az otthonunk
-          stílusos és kényelmes kialakítása érdekében számos lehetőség áll
-          rendelkezésünkre. Az egyik ilyen kreatív és hatékony módszer a
-          tapétázás, amely nemcsak esztétikailag vonzó, hanem számos praktikus
-          előnnyel is jár.
+          A tapétázás kreatív és hatékony módja annak, hogy otthonát stílusossá
+          és kényelmessé tegye, számos praktikus előnnyel.
         </p>
-        <p>Tapétázás előnyei:</p>
         <ul>
-          <li>
-            Változatos design lehetőségek: A tapéta kiválasztásakor szinte
-            végtelen lehetőségünk van a stílus, szín és mintaválasztás terén.
-            Klasszikus, modern, retro vagy éppen romantikus stílusok közül
-            választhatunk, illetve kombinálhatjuk azokat, és kifejezhetjük
-            egyedi ízlésünket a lakásunk kialakításában.
-          </li>
-          <li>
-            Hangulat és megjelenés: A tapéta kiválasztásával könnyen
-            megteremthetjük a kívánt hangulatot az adott helyiségben. Színek,
-            minták és textúrák kombinálásával kiemelhetjük az otthonunk
-            karakterét, és olyan atmoszférát teremthetünk, amely kellemesen
-            befolyásolja mindennapi életünket.
-          </li>
-          <li>
-            Praktikusság és tartósság: A festéssel ellentétben a minőségi
-            tapétázás előnyei közé tartozik, hogy évekig megőrzi eredeti
-            állapotukat, és ellenállnak a kopásnak, szennyeződéseknek. A vinyl
-            vagy vlies tapéták például nemcsak tartósak, de könnyen tisztíthatók
-            is, ami különösen előnyös olyan helyiségekben, mint a gyerekszoba
-            vagy a konyha.
-          </li>
-          <li>
-            Hő- és hangszigetelő tulajdonságok: A tapéták nemcsak dekoratívak,
-            hanem funkcionálisak is. Bizonyos típusú tapéták, például a
-            szövettel borított változatok, hozzájárulnak a falak
-            hőszigeteléséhez, így télen melegebbé tehetik a helyiséget. Emellett
-            a hangszigetelő tulajdonságoknak köszönhetően csökkenthetik a
-            zajokat, és kellemesebb akusztikát biztosíthatnak.
-          </li>
-          <li>
-            Variálhatóság és rugalmasság: A tapéta könnyen cserélhető, így a
-            lakásunk stílusa könnyen követheti az aktuális trendet, lehetőséget
-            biztosít számunkra, hogy újra és újra felfrissíthessük otthonunk
-            atmoszféráját.
-          </li>
-          <li>
-            Egyedi stílus és személyiség: A tapéta lehetőséget ad arra, hogy az
-            otthonunk egyedi és személyes stílusunkat tükrözze. Különleges
-            mintákkal és textúrákkal olyan atmoszférát teremthetünk, ami
-            kifejezi egyéniségünket és érdeklődési körünket.
-          </li>
-          <li>
-            Környezetbarát opciók: A fenntarthatóság ma már a lakberendezésben
-            is kiemelt szerepet kap. Számos gyártó kínál környezetbarát
-            tapétákat, amelyek vegyszermentes festékekkel készülnek, és
-            újrahasznosított anyagokat tartalmaznak. Ezek nemcsak a környezetet
-            óvják, hanem egészségesebb beltéri levegőt is biztosítanak
-          </li>
+          <li>Változatos design: Széles stílus- és mintaválaszték.</li>
+          <li>Praktikusság: Tartós és könnyen tisztítható.</li>
+          <li>Hő- és hangszigetelés: Csendesebb, melegebb terek.</li>
+          <li>Rugalmasság: Könnyen cserélhető trendkövetéshez.</li>
+          <li>Egyedi stílus: Személyiséget tükröző minták.</li>
+          <li>Környezetbarát: Fenntartható anyagokból.</li>
         </ul>
-
-        <!-- Image carousel for the section -->
         <div class="image-gallery" id="carousel2">
           <img src="tapeta.jpg" alt="Tapéta 1" class="active" />
           <img src="tapeta2.jpg" alt="Tapéta 2" />
           <button class="left" onclick="moveCarousel(-1, 'carousel2')">
-            &#10094;
+            ❮
           </button>
           <button class="right" onclick="moveCarousel(1, 'carousel2')">
-            &#10095;
+            ❯
+          </button>
+        </div>
+      </div>
+
+      <div class="service-card">
+        <h2>Mázolás</h2>
+        <p>
+          A mázolás nyílászárók, ajtók, ablakkeretek, valamint fa- és
+          fémfelületek kezelésére szolgál, esztétikus megjelenést és védelmet
+          biztosítva.
+        </p>
+        <ul>
+          <li>
+            Tartós védelem: Megóvja a felületeket a nedvességtől és rozsdától.
+          </li>
+          <li>Sima felület: Egyenletes és esztétikus végeredmény.</li>
+          <li>Sokoldalúság: Fa, fém és műanyag felületeken is alkalmazható.</li>
+        </ul>
+        <div class="image-gallery" id="carousel3">
+          <img src="maz1.jpg" alt="Mázolás 1" class="active" />
+          <img src="maz2.jpg" alt="Mázolás 2" />
+          <img src="maz3.jpg" alt="Mázolás 3" />
+          <img src="maz4.jpg" alt="Mázolás 4" />
+          <img src="maz5.jpg" alt="Mázolás 5" />
+          <button class="left" onclick="moveCarousel(-1, 'carousel3')">
+            ❮
+          </button>
+          <button class="right" onclick="moveCarousel(1, 'carousel3')">
+            ❯
+          </button>
+        </div>
+      </div>
+
+      <div class="service-card">
+        <h2>Gipszkartonozás</h2>
+        <p>
+          A gipszkartonozással modernséget és egyediséget vihet lakásába, formai
+          gazdagságot és rejtett világítást kínálva.
+        </p>
+        <ul>
+          <li>Könnyűség: Nem terheli az épület szerkezetét.</li>
+          <li>Rugalmas alakítás: Sokoldalú formák és kiegészítők.</li>
+          <li>Gyors kivitelezés: Egyszerűbb, mint a hagyományos építés.</li>
+          <li>Szigetelés: Kiváló hang- és hőszigetelő tulajdonságok.</li>
+          <li>Sima felület: Könnyen festhető vagy tapétázható.</li>
+          <li>Költséghatékony: Tartós és megfizethető megoldás.</li>
+        </ul>
+        <div class="image-gallery" id="carousel4">
+          <img src="gipsz1.jpeg" alt="Gipszkarton 1" class="active" />
+          <img src="gipsz2.jpeg" alt="Gipszkarton 2" />
+          <img src="gipsz3.jpg" alt="Gipszkarton 3" />
+          <img src="gipsz4.jpg" alt="Gipszkarton 4" />
+          <img src="gipsz5.jpg" alt="Gipszkarton 5" />
+          <img src="gipsz6.jpg" alt="Gipszkarton 6" />
+          <button class="left" onclick="moveCarousel(-1, 'carousel4')">
+            ❮
+          </button>
+          <button class="right" onclick="moveCarousel(1, 'carousel4')">
+            ❯
           </button>
         </div>
       </div>
@@ -393,39 +418,42 @@
 
     <footer class="footer">
       <div>
-        <h3>Navigation</h3>
-        <ul>
-          <li><a href="about.html">About</a></li>
-          <li><a href="services.html">Services</a></li>
-          <li><a href="contact.html">Contact</a></li>
-        </ul>
-      </div>
-      <div>
-        <h3>Our Services</h3>
-        <p>
-          Explore our wide range of services and find the perfect fit for your
-          needs.
-        </p>
-      </div>
-      <div>
-        <h3>Contact Us</h3>
-        <p>Company Name</p>
-        <p>Email: contact@company.com</p>
-        <p>Phone: +123 456 7890</p>
+        <h3>Kapcsolat</h3>
+        <p>Kondorék</p>
+        <p>Email: valter97@gmail.com</p>
+        <p>Phone: +36305624738</p>
       </div>
     </footer>
+
 
     <script>
       let currentImageIndex1 = 0;
       let currentImageIndex2 = 0;
+      let currentImageIndex3 = 0;
+      let currentImageIndex4 = 0;
       const images1 = document.querySelectorAll("#carousel1 img");
       const images2 = document.querySelectorAll("#carousel2 img");
+      const images3 = document.querySelectorAll("#carousel3 img");
+      const images4 = document.querySelectorAll("#carousel4 img");
 
       function moveCarousel(direction, carouselId) {
         const carousel = document.getElementById(carouselId);
-        let images = carouselId === "carousel1" ? images1 : images2;
+        let images =
+          carouselId === "carousel1"
+            ? images1
+            : carouselId === "carousel2"
+            ? images2
+            : carouselId === "carousel3"
+            ? images3
+            : images4;
         let currentIndex =
-          carouselId === "carousel1" ? currentImageIndex1 : currentImageIndex2;
+          carouselId === "carousel1"
+            ? currentImageIndex1
+            : carouselId === "carousel2"
+            ? currentImageIndex2
+            : carouselId === "carousel3"
+            ? currentImageIndex3
+            : currentImageIndex4;
 
         currentIndex += direction;
 
@@ -444,18 +472,19 @@
 
         if (carouselId === "carousel1") {
           currentImageIndex1 = currentIndex;
-        } else {
+        } else if (carouselId === "carousel2") {
           currentImageIndex2 = currentIndex;
+        } else if (carouselId === "carousel3") {
+          currentImageIndex3 = currentIndex;
+        } else {
+          currentImageIndex4 = currentIndex;
         }
       }
 
-      setInterval(() => {
-        moveCarousel(1, "carousel1");
-      }, 3000);
-
-      setInterval(() => {
-        moveCarousel(1, "carousel2");
-      }, 3000);
+      setInterval(() => moveCarousel(1, "carousel1"), 3000);
+      setInterval(() => moveCarousel(1, "carousel2"), 3000);
+      setInterval(() => moveCarousel(1, "carousel3"), 3000);
+      setInterval(() => moveCarousel(1, "carousel4"), 3000);
     </script>
   </body>
 </html>
