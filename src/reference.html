@@ -107,20 +107,23 @@
       .image-container {
         position: relative;
         width: 100%;
-        height: 300px;
         overflow: hidden;
         border-radius: 4px;
+        aspect-ratio: 4 / 3; /* Maintains a consistent aspect ratio */
       }
 
       .image-container img {
         width: 100%;
         height: 100%;
-        object-fit: cover;
+        object-fit: contain; /* Changed to contain to show full image */
         display: none;
+        opacity: 0;
+        transition: opacity 0.5s ease; /* Added fade transition */
       }
 
       .image-container img.active {
         display: block;
+        opacity: 1;
       }
 
       .nav-buttons {
@@ -192,6 +195,22 @@
         filter: grayscale(0%);
         transform: scale(1.2);
       }
+
+      /* Responsive Design */
+      @media (max-width: 768px) {
+        .reference-section {
+          grid-template-columns: 1fr; /* Stack sections on smaller screens */
+        }
+
+        .image-container {
+          aspect-ratio: 4 / 3; /* Maintain aspect ratio */
+        }
+
+        .nav-buttons button {
+          padding: 0.4rem 0.8rem;
+          font-size: 0.9rem;
+        }
+      }
     </style>
   </head>
   <body>
@@ -201,7 +220,6 @@
           <img src="KONDOREK_logo_colored.png" alt="Logo" class="nav-image" />
         </li>
         <li><a href="site.html">Főoldal</a></li>
-        <li><a href="about.html">Rólunk</a></li>
         <li><a href="services.html">Szolgáltatások</a></li>
         <li><a href="contact.html">Vélemények</a></li>
         <li><a href="reference.html">Referencia</a></li>
@@ -214,7 +232,7 @@
         <!-- Project 1: Győri Lakás Festés és Gipszkartonozás -->
         <div class="reference-section">
           <div class="image-section">
-            <h2>Előtte - Győri Lakás Festés</h2>
+            <h2>Előtte - Győri lakás teljeskörű festési munkálatai és gipszkartonozás</h2>
             <div class="image-container" data-section="before-1">
               <img
                 src="../references/Győri lakás teljeskörű festési munkálatai és gipszkartonozás/20230202_093449.jpg"
@@ -236,7 +254,7 @@
             </div>
           </div>
           <div class="image-section">
-            <h2>Utána - Győri Lakás Festés</h2>
+            <h2>Utána - Győri lakás teljeskörű festési munkálatai és gipszkartonozás</h2>
             <div class="image-container" data-section="after-1">
               <img
                 src="../references/Győri lakás teljeskörű festési munkálatai és gipszkartonozás/381520470_335582409043354_1311795045887252319_n.jpg"
@@ -266,7 +284,7 @@
         <!-- Project 2: Mosonmagyaróvári Panel Festés -->
         <div class="reference-section">
           <div class="image-section">
-            <h2>Előtte - Panel Festés</h2>
+            <h2>Előtte - Mosonmagyaróvári panel teljeskörű festési munkálatai</h2>
             <div class="image-container" data-section="before-2">
               <img
                 src="../references/Mosonmagyaróvári panel teljeskörű festési munkálatai/folyosó e..jpg"
@@ -292,7 +310,7 @@
             </div>
           </div>
           <div class="image-section">
-            <h2>Utána - Panel Festés</h2>
+            <h2>Utána - Mosonmagyaróvári panel teljeskörű festési munkálatai</h2>
             <div class="image-container" data-section="after-2">
               <img
                 src="../references/Mosonmagyaróvári panel teljeskörű festési munkálatai/folyosó u..jpg"
@@ -322,7 +340,7 @@
         <!-- Project 3: Mosonszentmiklós Tetőtér Beépítés -->
         <div class="reference-section">
           <div class="image-section">
-            <h2>Előtte - Tetőtér Beépítés</h2>
+            <h2>Előtte - Mosonszentmiklós tetőtér beépítés</h2>
             <div class="image-container" data-section="before-3">
               <img
                 src="../references/Mosonszentmiklós tetőtér beépítés/ablak előtte.png"
@@ -348,7 +366,7 @@
             </div>
           </div>
           <div class="image-section">
-            <h2>Utána - Tetőtér Beépítés</h2>
+            <h2>Utána - Mosonszentmiklós tetőtér beépítés</h2>
             <div class="image-container" data-section="after-3">
               <img
                 src="../references/Mosonszentmiklós tetőtér beépítés/ablak utána.png"
@@ -386,7 +404,7 @@
         <!-- Project 4: Mosonszentmiklósi Családi Ház Alsó Szint Festés -->
         <div class="reference-section">
           <div class="image-section">
-            <h2>Előtte - Alsó Szint Festés</h2>
+            <h2>Előtte - Mosonszentmiklósi családi hát teljeskörű festési munkálatai</h2>
             <div class="image-container" data-section="before-4">
               <img
                 src="../references/Mosonszentmiklósi családi hát teljeskörű festési munkálatai( tetőtér alsó szintje)/ajtó előtte.png"
@@ -424,7 +442,7 @@
             </div>
           </div>
           <div class="image-section">
-            <h2>Utána - Alsó Szint Festés</h2>
+            <h2>Utána - Mosonszentmiklósi családi ház teljeskörű festési munkálatai</h2>
             <div class="image-container" data-section="after-4">
               <img
                 src="../references/Mosonszentmiklósi családi hát teljeskörű festési munkálatai( tetőtér alsó szintje)/ajtó utána.png"
@@ -433,35 +451,31 @@
               />
               <img
                 src="../references/Mosonszentmiklósi családi hát teljeskörű festési munkálatai( tetőtér alsó szintje)/hajtoutána.png"
-                alt="After 1"
-              />
-              <img
-                src="../references/Mosonszentmiklósi családi hát teljeskörű festési munkálatai( tetőtér alsó szintje)/9-étkező kész.png"
-                alt="After 1"
-              />
-              <img
-                src="../references/Mosonszentmiklósi családi hát teljeskörű festési munkálatai( tetőtér alsó szintje)/9-étkező kész.png"
-                alt="After 1"
-              />
-              <img
-                src="../references/Mosonszentmiklósi családi hát teljeskörű festési munkálatai( tetőtér alsó szintje)/10-nappali+konyha1 kész.png"
                 alt="After 2"
               />
               <img
-                src="../references/Mosonszentmiklósi családi hát teljeskörű festési munkálatai( tetőtér alsó szintje)/11-nappali+konyha2 kész.png"
+                src="../references/Mosonszentmiklósi családi hát teljeskörű festési munkálatai( tetőtér alsó szintje)/9-étkező kész.png"
                 alt="After 3"
               />
               <img
-                src="../references/Mosonszentmiklósi családi hát teljeskörű festési munkálatai( tetőtér alsó szintje)/közlekedő utána.jpeg"
+                src="../references/Mosonszentmiklósi családi hát teljeskörű festési munkálatai( tetőtér alsó szintje)/10-nappali+konyha1 kész.png"
                 alt="After 4"
               />
               <img
-                src="../references/Mosonszentmiklósi családi hát teljeskörű festési munkálatai( tetőtér alsó szintje)/fürdő utána.jpeg"
+                src="../references/Mosonszentmiklósi családi hát teljeskörű festési munkálatai( tetőtér alsó szintje)/11-nappali+konyha2 kész.png"
                 alt="After 5"
               />
               <img
-                src="../references/Mosonszentmiklósi családi hát teljeskörű festési munkálatai( tetőtér alsó szintje)/12-szoba kész.png"
+                src="../references/Mosonszentmiklósi családi hát teljeskörű festési munkálatai( tetőtér alsó szintje)/közlekedő utána.jpeg"
                 alt="After 6"
+              />
+              <img
+                src="../references/Mosonszentmiklósi családi hát teljeskörű festési munkálatai( tetőtér alsó szintje)/fürdő utána.jpeg"
+                alt="After 7"
+              />
+              <img
+                src="../references/Mosonszentmiklósi családi hát teljeskörű festési munkálatai( tetőtér alsó szintje)/12-szoba kész.png"
+                alt="After 8"
               />
             </div>
             <div class="nav-buttons">
@@ -474,7 +488,7 @@
         <!-- Project 5: Mosonszentmiklósi Családi Ház Festés -->
         <div class="reference-section">
           <div class="image-section">
-            <h2>Előtte - Családi Ház Festés</h2>
+            <h2>Előtte - Mosonszentmiklósi családi ház teljeskörű festési munkálatai</h2>
             <div class="image-container" data-section="before-5">
               <img
                 src="../references/Mosonszentmiklósi családi ház teljeskörű festési munkálatai/előtte1.jpg"
@@ -512,7 +526,7 @@
             </div>
           </div>
           <div class="image-section">
-            <h2>Utána - Családi Ház Festés</h2>
+            <h2>Utána - Mosonszentmiklósi családi ház teljeskörű festési munkálatai</h2>
             <div class="image-container" data-section="after-5">
               <img
                 src="../references/Mosonszentmiklósi családi ház teljeskörű festési munkálatai/utána1.jpg"
@@ -555,16 +569,10 @@
           <a href="https://www.facebook.com/Kondorek2022" target="_blank">
             <img src="../icons/59439.png" alt="Facebook" />
           </a>
-          <a
-            href="https://www.instagram.com/kondor_construction/"
-            target="_blank"
-          >
+          <a href="https://www.tiktok.com/@kondorek_construction?lang=hu-HU" target="_blank">
             <img src="../icons/1946552.png" alt="TikTok" />
           </a>
-          <a
-            href="https://www.tiktok.com/@kondorek_construction?lang=hu-HU"
-            target="_blank"
-          >
+          <a href="https://www.instagram.com/kondor_construction/" target="_blank">
             <img src="../icons/3661391.png" alt="Instagram" />
           </a>
         </div>
@@ -573,17 +581,14 @@
 
     <script>
       function changeImage(sectionId, direction) {
-        const container = document.querySelector(
-          `[data-section="${sectionId}"]`
-        );
+        const container = document.querySelector(`[data-section="${sectionId}"]`);
         const images = container.getElementsByTagName("img");
         let currentIndex = Array.from(images).findIndex((img) =>
           img.classList.contains("active")
         );
 
         images[currentIndex].classList.remove("active");
-        currentIndex =
-          (currentIndex + direction + images.length) % images.length;
+        currentIndex = (currentIndex + direction + images.length) % images.length;
         images[currentIndex].classList.add("active");
       }
     </script>
