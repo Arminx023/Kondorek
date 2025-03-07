@@ -131,6 +131,31 @@
       .footer a:hover {
         color: #fff;
       }
+      
+      .social-icons {
+        display: flex;
+        justify-content: center;
+        gap: 1.5rem;
+        margin-top: 1rem;
+      }
+
+      .social-icons a {
+        display: inline-block;
+        transition: transform 0.3s ease, filter 0.3s ease;
+      }
+
+      .social-icons img {
+        width: 40px;
+        height: 40px;
+        filter: grayscale(100%);
+        transition: filter 0.3s ease;
+      }
+
+      .social-icons a:hover img {
+        filter: grayscale(0%);
+        transform: scale(1.2);
+      }
+
     </style>
   </head>
   <body>
@@ -141,6 +166,8 @@
         <li><a href="about.html">Rólunk</a></li>
         <li><a href="services.html">Szolgáltatások</a></li>
         <li><a href="contact.html">Vélemények</a></li>
+        <li><a href="reference.html">Referencia</a></li>
+
       </ul>
     </nav>
 
@@ -154,7 +181,18 @@
       <div>
         <h3>Kapcsolat</h3>
         <p>Kondorék</p>
-        <p>Email: valter97@gmail.com</p>
+        <p>Email: kondorek2022@gmail.com</p>
         <p>Phone: +36305624738</p>
+        <div class="social-icons">
+          <a href="https://www.facebook.com/Kondorek2022" target="_blank">
+            <img src="../icons/59439.png" alt="Facebook" />
+          </a>
+          <a href="https://www.instagram.com/kondor_construction/" target="_blank">
+            <img src="../icons/1946552.png" alt="TikTok" />
+          </a>
+          <a href="https://www.tiktok.com/@kondorek_construction?lang=hu-HU" target="_blank">
+            <img src="../icons/3661391.png" alt="Instagram" />
+          </a>
+        </div>
       </div>
     </footer>

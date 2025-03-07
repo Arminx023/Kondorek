@@ -7,11 +7,11 @@
     <title>Contact Us</title>
     <style>
       body {
-        font-family: 'Arial', sans-serif;
+        font-family: "Arial", sans-serif;
         margin: 0;
         padding: 0;
         box-sizing: border-box;
-        background: linear-gradient(135deg, #e0e7ef 0%, #b0c4de 100%); /* Grey to light blue gradient */
+        background: linear-gradient(135deg, #e0e7ef 0%, #b0c4de 100%);
         color: #333;
       }
 
@@ -78,7 +78,7 @@
       /* Modern Contact Section */
       .contact-section {
         padding: 6rem 2rem;
-        background: linear-gradient(180deg, #4682b4 0%, #2f4f4f 100%); /* Blue to dark grey-blue */
+        background: linear-gradient(180deg, #4682b4 0%, #2f4f4f 100%);
         color: white;
         text-align: center;
         min-height: 100vh;
@@ -110,8 +110,8 @@
       /* Highlighted Review Scroller */
       .review-scroller {
         width: 100%;
-        max-width: 700px; /* Slightly wider for emphasis */
-        height: 400px; /* Taller to showcase more reviews */
+        max-width: 700px;
+        height: 400px;
         overflow: hidden;
         position: relative;
         background: rgba(255, 255, 255, 0.1);
@@ -139,7 +139,7 @@
 
       /* Modern Footer */
       .footer {
-        background: #2f4f4f; /* Dark grey-blue */
+        background: #2f4f4f;
         color: #e0e7ef;
         padding: 3rem 2rem;
         display: grid;
@@ -168,21 +168,50 @@
         font-size: 1rem;
         line-height: 1.6;
       }
+
+      .social-icons {
+        display: flex;
+        justify-content: center;
+        gap: 1.5rem;
+        margin-top: 1rem;
+      }
+
+      .social-icons a {
+        display: inline-block;
+        transition: transform 0.3s ease, filter 0.3s ease;
+      }
+
+      .social-icons img {
+        width: 40px;
+        height: 40px;
+        filter: grayscale(100%);
+        transition: filter 0.3s ease;
+      }
+
+      .social-icons a:hover img {
+        filter: grayscale(0%);
+        transform: scale(1.2);
+      }
     </style>
   </head>
   <body>
     <nav class="navbar">
       <ul>
-        <li><img src="KONDOREK_logo_colored.png" alt="Logo" class="nav-image" /></li>
+        <li>
+          <img src="KONDOREK_logo_colored.png" alt="Logo" class="nav-image" />
+        </li>
         <li><a href="site.html">Főoldal</a></li>
         <li><a href="about.html">Rólunk</a></li>
         <li><a href="services.html">Szolgáltatások</a></li>
         <li><a href="contact.html">Vélemények</a></li>
+        <li><a href="reference.html">Referencia</a></li>
       </ul>
     </nav>
 
     <section class="contact-section">
-      <p class="hungarian-text">Az Ön véleménye és visszajelzése fontos számunkra!</p>
+      <p class="hungarian-text">
+        Az Ön véleménye és visszajelzése fontos számunkra!
+      </p>
       <div class="review-scroller">
         <div class="reviews" id="reviews"></div>
       </div>
@@ -192,29 +221,45 @@
       <div>
         <h3>Kapcsolat</h3>
         <p>Kondorék</p>
-        <p>Email: valter97@gmail.com</p>
+        <p>Email: kondorek2022@gmail.com</p>
         <p>Phone: +36305624738</p>
+        <div class="social-icons">
+          <a href="https://www.facebook.com/Kondorek2022" target="_blank">
+            <img src="../icons/59439.png" alt="Facebook" />
+          </a>
+          <a
+            href="https://www.tiktok.com/@kondorek_construction?lang=hu-HU"
+            target="_blank"
+          >
+            <img src="../icons/1946552.png" alt="TikTok" />
+          </a>
+          <a
+            href="https://www.instagram.com/kondor_construction/"
+            target="_blank"
+          >
+            <img src="../icons/3661391.png" alt="Instagram" />
+          </a>
+        </div>
       </div>
     </footer>
 
-
     <script>
-      const reviewContainer = document.getElementById('reviews');
-      const scroller = document.querySelector('.review-scroller');
+      const reviewContainer = document.getElementById("reviews");
+      const scroller = document.querySelector(".review-scroller");
       const totalReviews = 19;
       let position = 0;
-      let speed =  0.5; // Adjusted for a slightly faster scroll
+      let speed = 0.5;
       let animationFrameId;
 
       function loadReviews() {
         for (let i = 1; i <= totalReviews; i++) {
-          const img = document.createElement('img');
-          img.src = `${i}.png`;
+          const img = document.createElement("img");
+          img.src = `../contact/${i}.png`; // Corrected path to the reviews
           img.alt = `Review ${i}`;
           reviewContainer.appendChild(img);
         }
-        const images = reviewContainer.querySelectorAll('img');
-        images.forEach(img => {
+        const images = reviewContainer.querySelectorAll("img");
+        images.forEach((img) => {
           const clone = img.cloneNode(true);
           reviewContainer.appendChild(clone);
         });
@@ -236,11 +281,11 @@
         animationFrameId = requestAnimationFrame(scrollReviews);
       }
 
-      scroller.addEventListener('mouseenter', () => {
+      scroller.addEventListener("mouseenter", () => {
         cancelAnimationFrame(animationFrameId);
       });
 
-      scroller.addEventListener('mouseleave', () => {
+      scroller.addEventListener("mouseleave", () => {
         animationFrameId = requestAnimationFrame(scrollReviews);
       });
 

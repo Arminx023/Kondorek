@@ -281,6 +281,30 @@
           height: 200px;
         }
       }
+
+      .social-icons {
+        display: flex;
+        justify-content: center;
+        gap: 1.5rem;
+        margin-top: 1rem;
+      }
+
+      .social-icons a {
+        display: inline-block;
+        transition: transform 0.3s ease, filter 0.3s ease;
+      }
+
+      .social-icons img {
+        width: 40px;
+        height: 40px;
+        filter: grayscale(100%);
+        transition: filter 0.3s ease;
+      }
+
+      .social-icons a:hover img {
+        filter: grayscale(0%);
+        transform: scale(1.2);
+      }
     </style>
   </head>
   <body>
@@ -293,6 +317,7 @@
         <li><a href="about.html">Rólunk</a></li>
         <li><a href="services.html">Szolgáltatások</a></li>
         <li><a href="contact.html">Vélemények</a></li>
+        <li><a href="reference.html">Referencia</a></li>
       </ul>
     </nav>
 
@@ -318,9 +343,9 @@
           <li>Védőréteg: Véd a kopástól és időjárási károktól.</li>
         </ul>
         <div class="image-gallery" id="carousel1">
-          <img src="fest1.jpg" alt="Festés 1" class="active" />
-          <img src="fest2.jpg" alt="Festés 2" />
-          <img src="fest3.jpg" alt="Festés 3" />
+          <img src="../services/fest1.jpg" alt="Festés 1" class="active" />
+          <img src="../services/fest2.jpg" alt="Festés 2" />
+          <img src="../services/fest3.jpg" alt="Festés 3" />
           <button class="left" onclick="moveCarousel(-1, 'carousel1')">
             ❮
           </button>
@@ -345,8 +370,8 @@
           <li>Környezetbarát: Fenntartható anyagokból.</li>
         </ul>
         <div class="image-gallery" id="carousel2">
-          <img src="tapeta.jpg" alt="Tapéta 1" class="active" />
-          <img src="tapeta2.jpg" alt="Tapéta 2" />
+          <img src="../services/tapeta.jpg" alt="Tapéta 1" class="active" />
+          <img src="../services/tapeta2.jpg" alt="Tapéta 2" />
           <button class="left" onclick="moveCarousel(-1, 'carousel2')">
             ❮
           </button>
@@ -371,11 +396,11 @@
           <li>Sokoldalúság: Fa, fém és műanyag felületeken is alkalmazható.</li>
         </ul>
         <div class="image-gallery" id="carousel3">
-          <img src="maz1.jpg" alt="Mázolás 1" class="active" />
-          <img src="maz2.jpg" alt="Mázolás 2" />
-          <img src="maz3.jpg" alt="Mázolás 3" />
-          <img src="maz4.jpg" alt="Mázolás 4" />
-          <img src="maz5.jpg" alt="Mázolás 5" />
+          <img src="../services/maz1.jpg" alt="Mázolás 1" class="active" />
+          <img src="../services/maz2.jpg" alt="Mázolás 2" />
+          <img src="../services/maz3.jpg" alt="Mázolás 3" />
+          <img src="../services/maz4.jpg" alt="Mázolás 4" />
+          <img src="../services/maz5.jpg" alt="Mázolás 5" />
           <button class="left" onclick="moveCarousel(-1, 'carousel3')">
             ❮
           </button>
@@ -400,12 +425,12 @@
           <li>Költséghatékony: Tartós és megfizethető megoldás.</li>
         </ul>
         <div class="image-gallery" id="carousel4">
-          <img src="gipsz1.jpeg" alt="Gipszkarton 1" class="active" />
-          <img src="gipsz2.jpeg" alt="Gipszkarton 2" />
-          <img src="gipsz3.jpg" alt="Gipszkarton 3" />
-          <img src="gipsz4.jpg" alt="Gipszkarton 4" />
-          <img src="gipsz5.jpg" alt="Gipszkarton 5" />
-          <img src="gipsz6.jpg" alt="Gipszkarton 6" />
+          <img src="../services/gipsz1.jpeg" alt="Gipszkarton 1" class="active" />
+          <img src="../services/gipsz2.jpeg" alt="Gipszkarton 2" />
+          <img src="../services/gipsz3.jpg" alt="Gipszkarton 3" />
+          <img src="../services/gipsz4.jpg" alt="Gipszkarton 4" />
+          <img src="../services/gipsz5.jpg" alt="Gipszkarton 5" />
+          <img src="../services/gipsz6.jpg" alt="Gipszkarton 6" />
           <button class="left" onclick="moveCarousel(-1, 'carousel4')">
             ❮
           </button>
@@ -420,11 +445,27 @@
       <div>
         <h3>Kapcsolat</h3>
         <p>Kondorék</p>
-        <p>Email: valter97@gmail.com</p>
+        <p>Email: kondorek2022@gmail.com</p>
         <p>Phone: +36305624738</p>
+        <div class="social-icons">
+          <a href="https://www.facebook.com/Kondorek2022" target="_blank">
+            <img src="../icons/59439.png" alt="Facebook" />
+          </a>
+          <a
+            href="https://www.instagram.com/kondor_construction/"
+            target="_blank"
+          >
+            <img src="../icons/1946552.png" alt="TikTok" />
+          </a>
+          <a
+            href="https://www.tiktok.com/@kondorek_construction?lang=hu-HU"
+            target="_blank"
+          >
+            <img src="../icons/3661391.png" alt="Instagram" />
+          </a>
+        </div>
       </div>
     </footer>
-
 
     <script>
       let currentImageIndex1 = 0;
