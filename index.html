@@ -22,23 +22,15 @@
         padding: 1rem;
         top: 0;
         left: 0;
-        display: flex;
-        justify-content: space-between;
         backdrop-filter: blur(10px);
         z-index: 10;
-      }
-
-      nav a {
-        color: black;
-        text-decoration: none;
-        font-size: 1.2rem;
       }
 
       .navbar {
         display: flex;
         justify-content: space-between;
         align-items: center;
-        padding: 1rem;
+        padding: 0.5rem 1rem;
         width: 100%;
       }
 
@@ -48,6 +40,7 @@
         align-items: center;
         margin: 0;
         padding: 0;
+        flex-wrap: wrap;
       }
 
       .navbar li {
@@ -71,14 +64,24 @@
       }
 
       .nav-image {
-        width: 150px;
+        width: clamp(100px, 20vw, 150px);
         height: auto;
+      }
+
+      .hamburger {
+        display: none;
+        background: none;
+        border: none;
+        font-size: 2rem;
+        cursor: pointer;
+        color: #333;
       }
 
       .hero-section {
         position: relative;
         width: 100%;
-        height: 650px;
+        height: 80vh;
+        min-height: 300px;
         overflow: hidden;
         background: linear-gradient(180deg, #4682b4 0%, #2f4f4f 100%);
       }
@@ -124,21 +127,21 @@
         transform: translate(-50%, -50%);
         text-align: center;
         color: white;
-        font-size: 2.5rem;
+        font-size: clamp(1.5rem, 5vw, 2.5rem);
         z-index: 5;
         text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
       }
 
       .overlay-text button {
         padding: 0.7rem 1.5rem;
-        margin: 1.5rem;
+        margin: 0.5rem;
         background-color: #007bff;
         color: white;
         border: none;
         border-radius: 5px;
         cursor: pointer;
         transition: background-color 0.3s;
-        font-size: 1.3rem;
+        font-size: clamp(1rem, 3vw, 1.3rem);
         box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
       }
 
@@ -147,7 +150,7 @@
       }
 
       .about-section {
-        padding: 4rem 2rem;
+        padding: 2rem 1rem;
         background: #fff;
         display: flex;
         justify-content: space-between;
@@ -169,19 +172,19 @@
       }
 
       .summary h2 {
-        font-size: 2.5rem;
+        font-size: clamp(1.5rem, 4vw, 2.5rem);
         color: #4682b4;
         margin-bottom: 1rem;
       }
 
       .what-we-do {
         text-align: center;
-        padding: 4rem 2rem;
+        padding: 2rem 1rem;
         background: linear-gradient(180deg, #b0c4de 0%, #e0e7ef 100%);
       }
 
       .what-we-do h2 {
-        font-size: 2.5rem;
+        font-size: clamp(1.5rem, 4vw, 2.5rem);
         color: #2f4f4f;
         margin-bottom: 2rem;
       }
@@ -189,8 +192,8 @@
       .cards {
         display: grid;
         grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-        gap: 2rem;
-        padding: 0 2rem;
+        gap: 1rem;
+        padding: 0 1rem;
       }
 
       .card {
@@ -213,7 +216,7 @@
       .footer {
         background: #2f4f4f;
         color: #e0e7ef;
-        padding: 3rem 2rem;
+        padding: 2rem 1rem;
         display: grid;
         grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
         gap: 2rem;
@@ -236,32 +239,6 @@
         color: #fff;
       }
 
-      @media (max-width: 768px) {
-        .hero-section {
-          height: 450px;
-        }
-
-        .overlay-text {
-          font-size: 1.8rem;
-        }
-
-        .about-section {
-          flex-direction: column;
-          text-align: center;
-          margin: 1rem;
-        }
-
-        .about-section img {
-          width: 80%;
-          margin-top: 2rem;
-        }
-
-        .summary {
-          width: 100%;
-          padding: 0;
-        }
-      }
-
       .social-icons {
         display: flex;
         justify-content: center;
@@ -275,8 +252,8 @@
       }
 
       .social-icons img {
-        width: 40px;
-        height: 40px;
+        width: clamp(30px, 8vw, 40px);
+        height: auto;
         filter: grayscale(100%);
         transition: filter 0.3s ease;
       }
@@ -285,10 +262,93 @@
         filter: grayscale(0%);
         transform: scale(1.2);
       }
+
+      /* Media Queries */
+      @media (max-width: 768px) {
+        .hamburger {
+          display: block;
+        }
+
+        .navbar ul {
+          display: none;
+          flex-direction: column;
+          width: 100%;
+          background-color: rgba(255, 255, 255, 0.9);
+          position: absolute;
+          top: 60px;
+          left: 0;
+        }
+
+        .navbar ul.active {
+          display: flex;
+        }
+
+        .navbar li {
+          margin: 10px 0;
+          text-align: center;
+        }
+
+        .hero-section {
+          height: 50vh;
+        }
+
+        .overlay-text {
+          font-size: 1.8rem;
+        }
+
+        .overlay-text button {
+          display: block;
+          width: 80%;
+          margin: 0.5rem auto;
+        }
+
+        .about-section {
+          flex-direction: column;
+          text-align: center;
+          margin: 1rem;
+        }
+
+        .about-section img {
+          width: 100%;
+          margin-top: 1rem;
+        }
+
+        .summary {
+          width: 100%;
+          padding: 0;
+        }
+
+        .footer {
+          grid-template-columns: 1fr;
+        }
+      }
+
+      @media (max-width: 480px) {
+        nav a {
+          font-size: 1rem;
+        }
+
+        .overlay-text {
+          font-size: 1.2rem;
+        }
+
+        .card {
+          padding: 1rem;
+        }
+
+        .card h3 {
+          font-size: 1.2rem;
+        }
+
+        .footer h3 {
+          font-size: 1.2rem;
+        }
+      }
     </style>
   </head>
   <body>
     <nav class="navbar">
+      <button class="hamburger">☰</button>
       <ul>
         <li>
           <img src="KONDOREK_logo_colored.png" alt="Logo" class="nav-image" />
@@ -319,8 +379,8 @@
           />
           <div class="overlay-text">
             <h2>Pofi festési szolgáltatások és gipszkartonszerelés</h2>
-            <button onclick="location.href='#about'">About Us</button>
-            <button onclick="location.href='#services'">Services</button>
+            <button onclick="location.href='#about'">Rólunk</button>
+            <button onclick="location.href='#services'">Szolgáltatások</button>
           </div>
         </div>
         <div class="image-slide">
@@ -330,8 +390,8 @@
           />
           <div class="overlay-text">
             <h2>Pofi festési szolgáltatások és gipszkartonszerelés</h2>
-            <button onclick="location.href='#about'">About Us</button>
-            <button onclick="location.href='#services'">Services</button>
+            <button onclick="location.href='#about'">Rólunk</button>
+            <button onclick="location.href='#services'">Szolgáltatások</button>
           </div>
         </div>
       </div>
@@ -399,19 +459,20 @@
             href="https://www.instagram.com/kondor_construction/"
             target="_blank"
           >
-            <img src="./icons/1946552.png" alt="TikTok" />
+            <img src="./icons/1946552.png" alt="Instagram" />
           </a>
           <a
             href="https://www.tiktok.com/@kondorek_construction?lang=hu-HU"
             target="_blank"
           >
-            <img src="./icons/3661391.png" alt="Instagram" />
+            <img src="./icons/3661391.png" alt="TikTok" />
           </a>
         </div>
       </div>
     </footer>
 
     <script>
+      // Slideshow functionality
       const slides = document.querySelectorAll(".image-slide");
       let currentSlide = 0;
 
@@ -430,6 +491,13 @@
       }
 
       setInterval(nextSlide, 5000);
+
+      const navbar = document.querySelector(".navbar ul");
+      const hamburger = document.querySelector(".hamburger");
+
+      hamburger.addEventListener("click", () => {
+        navbar.classList.toggle("active");
+      });
     </script>
   </body>
 </html>

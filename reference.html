@@ -22,8 +22,6 @@
         padding: 1rem;
         top: 0;
         left: 0;
-        display: flex;
-        justify-content: space-between;
         backdrop-filter: blur(10px);
         z-index: 10;
       }
@@ -32,7 +30,7 @@
         display: flex;
         justify-content: space-between;
         align-items: center;
-        padding: 1rem;
+        padding: 0.5rem 1rem;
         width: 100%;
       }
 
@@ -42,6 +40,7 @@
         align-items: center;
         margin: 0;
         padding: 0;
+        flex-wrap: wrap;
       }
 
       .navbar li {
@@ -65,18 +64,33 @@
       }
 
       .nav-image {
-        width: 150px;
+        width: clamp(100px, 20vw, 150px);
         height: auto;
       }
 
+      .hamburger {
+        display: none;
+        background: none;
+        border: none;
+        font-size: 2rem;
+        cursor: pointer;
+        color: #333;
+      }
+
       .hero-section {
-        padding: 6rem 2rem;
+        padding: 6rem 1rem;
         background: linear-gradient(180deg, #4682b4 0%, #2f4f4f 100%);
         color: white;
         min-height: 100vh;
         display: flex;
         flex-direction: column;
         align-items: center;
+      }
+
+      .hero-section h1 {
+        font-size: clamp(2rem, 6vw, 3rem);
+        margin-bottom: 2rem;
+        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
       }
 
       .reference-container {
@@ -101,6 +115,7 @@
       .image-section h2 {
         text-align: center;
         margin-bottom: 1rem;
+        font-size: clamp(1.2rem, 3vw, 1.5rem);
         text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
       }
 
@@ -109,16 +124,16 @@
         width: 100%;
         overflow: hidden;
         border-radius: 4px;
-        aspect-ratio: 4 / 3; /* Maintains a consistent aspect ratio */
+        aspect-ratio: 4 / 3;
       }
 
       .image-container img {
         width: 100%;
         height: 100%;
-        object-fit: contain; /* Changed to contain to show full image */
+        object-fit: contain;
         display: none;
         opacity: 0;
-        transition: opacity 0.5s ease; /* Added fade transition */
+        transition: opacity 0.5s ease;
       }
 
       .image-container img.active {
@@ -140,6 +155,7 @@
         border-radius: 4px;
         cursor: pointer;
         transition: background 0.3s;
+        font-size: clamp(0.8rem, 2vw, 1rem);
       }
 
       .nav-buttons button:hover {
@@ -149,7 +165,7 @@
       .footer {
         background: #2f4f4f;
         color: #e0e7ef;
-        padding: 3rem 2rem;
+        padding: 2rem 1rem;
         display: grid;
         grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
         gap: 2rem;
@@ -157,7 +173,7 @@
       }
 
       .footer h3 {
-        font-size: 1.5rem;
+        font-size: clamp(1.2rem, 3vw, 1.5rem);
         margin-bottom: 1rem;
         color: #fff;
       }
@@ -170,6 +186,11 @@
 
       .footer a:hover {
         color: #fff;
+      }
+
+      .footer p {
+        font-size: clamp(0.9rem, 2.5vw, 1rem);
+        line-height: 1.6;
       }
 
       .social-icons {
@@ -185,8 +206,8 @@
       }
 
       .social-icons img {
-        width: 40px;
-        height: 40px;
+        width: clamp(30px, 8vw, 40px);
+        height: auto;
         filter: grayscale(100%);
         transition: filter 0.3s ease;
       }
@@ -196,25 +217,82 @@
         transform: scale(1.2);
       }
 
-      /* Responsive Design */
+      /* Media Queries */
       @media (max-width: 768px) {
+        .hamburger {
+          display: block;
+        }
+
+        .navbar ul {
+          display: none;
+          flex-direction: column;
+          width: 100%;
+          background-color: rgba(255, 255, 255, 0.9);
+          position: absolute;
+          top: 60px;
+          left: 0;
+        }
+
+        .navbar ul.active {
+          display: flex;
+        }
+
+        .navbar li {
+          margin: 10px 0;
+          text-align: center;
+        }
+
+        .hero-section {
+          padding: 4rem 1rem;
+        }
+
         .reference-section {
-          grid-template-columns: 1fr; /* Stack sections on smaller screens */
+          grid-template-columns: 1fr;
         }
 
         .image-container {
-          aspect-ratio: 4 / 3; /* Maintain aspect ratio */
+          aspect-ratio: 4 / 3;
         }
 
         .nav-buttons button {
           padding: 0.4rem 0.8rem;
-          font-size: 0.9rem;
+        }
+
+        .footer {
+          grid-template-columns: 1fr;
+        }
+      }
+
+      @media (max-width: 480px) {
+        nav a {
+          font-size: 1rem;
+        }
+
+        .hero-section {
+          padding: 3rem 0.5rem;
+        }
+
+        .reference-section {
+          gap: 1rem;
+        }
+
+        .image-section {
+          padding: 0.5rem;
+        }
+
+        .image-section h2 {
+          font-size: 1rem;
+        }
+
+        .nav-buttons {
+          margin-top: 0.5rem;
         }
       }
     </style>
   </head>
   <body>
     <nav class="navbar">
+      <button class="hamburger">☰</button>
       <ul>
         <li>
           <img src="KONDOREK_logo_colored.png" alt="Logo" class="nav-image" />
@@ -404,7 +482,7 @@
         <!-- Project 4: Mosonszentmiklósi Családi Ház Alsó Szint Festés -->
         <div class="reference-section">
           <div class="image-section">
-            <h2>Előtte - Mosonszentmiklósi családi hát teljeskörű festési munkálatai</h2>
+            <h2>Előtte - Mosonszentmiklósi családi ház teljeskörű festési munkálatai</h2>
             <div class="image-container" data-section="before-4">
               <img
                 src="./references/Mosonszentmiklósi családi hát teljeskörű festési munkálatai( tetőtér alsó szintje)/ajtó előtte.png"
@@ -580,6 +658,13 @@
     </footer>
 
     <script>
+      const navbar = document.querySelector(".navbar ul");
+      const hamburger = document.querySelector(".hamburger");
+
+      hamburger.addEventListener("click", () => {
+        navbar.classList.toggle("active");
+      });
+
       function changeImage(sectionId, direction) {
         const container = document.querySelector(`[data-section="${sectionId}"]`);
         const images = container.getElementsByTagName("img");

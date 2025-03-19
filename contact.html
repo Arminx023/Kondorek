@@ -22,23 +22,15 @@
         padding: 1rem;
         top: 0;
         left: 0;
-        display: flex;
-        justify-content: space-between;
         backdrop-filter: blur(10px);
         z-index: 10;
-      }
-
-      nav a {
-        color: black;
-        text-decoration: none;
-        font-size: 1.2rem;
       }
 
       .navbar {
         display: flex;
         justify-content: space-between;
         align-items: center;
-        padding: 1rem;
+        padding: 0.5rem 1rem;
         width: 100%;
       }
 
@@ -48,6 +40,7 @@
         align-items: center;
         margin: 0;
         padding: 0;
+        flex-wrap: wrap;
       }
 
       .navbar li {
@@ -71,13 +64,21 @@
       }
 
       .nav-image {
-        width: 150px;
+        width: clamp(100px, 20vw, 150px);
         height: auto;
       }
 
-      /* Modern Contact Section */
+      .hamburger {
+        display: none;
+        background: none;
+        border: none;
+        font-size: 2rem;
+        cursor: pointer;
+        color: #333;
+      }
+
       .contact-section {
-        padding: 6rem 2rem;
+        padding: 6rem 1rem;
         background: linear-gradient(180deg, #4682b4 0%, #2f4f4f 100%);
         color: white;
         text-align: center;
@@ -89,29 +90,28 @@
       }
 
       .contact-section h1 {
-        font-size: 3rem;
+        font-size: clamp(2rem, 6vw, 3rem);
         margin-bottom: 1.5rem;
         text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
       }
 
       .contact-section p {
-        font-size: 1.5rem;
+        font-size: clamp(1rem, 4vw, 1.5rem);
         margin-bottom: 2rem;
         max-width: 800px;
       }
 
       .hungarian-text {
-        font-size: 1.2rem;
+        font-size: clamp(1rem, 3vw, 1.2rem);
         font-style: italic;
         color: #e0e7ef;
         margin-bottom: 2rem;
       }
 
-      /* Highlighted Review Scroller */
       .review-scroller {
         width: 100%;
         max-width: 700px;
-        height: 400px;
+        height: clamp(300px, 50vh, 400px);
         overflow: hidden;
         position: relative;
         background: rgba(255, 255, 255, 0.1);
@@ -141,7 +141,7 @@
       .footer {
         background: #2f4f4f;
         color: #e0e7ef;
-        padding: 3rem 2rem;
+        padding: 2rem 1rem;
         display: grid;
         grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
         gap: 2rem;
@@ -149,7 +149,7 @@
       }
 
       .footer h3 {
-        font-size: 1.5rem;
+        font-size: clamp(1.2rem, 3vw, 1.5rem);
         margin-bottom: 1rem;
         color: #fff;
       }
@@ -165,7 +165,7 @@
       }
 
       .footer p {
-        font-size: 1rem;
+        font-size: clamp(0.9rem, 2.5vw, 1rem);
         line-height: 1.6;
       }
 
@@ -182,8 +182,8 @@
       }
 
       .social-icons img {
-        width: 40px;
-        height: 40px;
+        width: clamp(30px, 8vw, 40px);
+        height: auto;
         filter: grayscale(100%);
         transition: filter 0.3s ease;
       }
@@ -192,10 +192,67 @@
         filter: grayscale(0%);
         transform: scale(1.2);
       }
+
+      /* Media Queries */
+      @media (max-width: 768px) {
+        .hamburger {
+          display: block;
+        }
+
+        .navbar ul {
+          display: none;
+          flex-direction: column;
+          width: 100%;
+          background-color: rgba(255, 255, 255, 0.9);
+          position: absolute;
+          top: 60px;
+          left: 0;
+        }
+
+        .navbar ul.active {
+          display: flex;
+        }
+
+        .navbar li {
+          margin: 10px 0;
+          text-align: center;
+        }
+
+        .contact-section {
+          padding: 4rem 1rem;
+        }
+
+        .review-scroller {
+          max-width: 90%;
+        }
+
+        .footer {
+          grid-template-columns: 1fr;
+        }
+      }
+
+      @media (max-width: 480px) {
+        nav a {
+          font-size: 1rem;
+        }
+
+        .contact-section {
+          padding: 3rem 0.5rem;
+        }
+
+        .hungarian-text {
+          padding: 0 1rem;
+        }
+
+        .review-scroller {
+          height: 250px;
+        }
+      }
     </style>
   </head>
   <body>
     <nav class="navbar">
+      <button class="hamburger">☰</button>
       <ul>
         <li>
           <img src="KONDOREK_logo_colored.png" alt="Logo" class="nav-image" />
@@ -243,6 +300,15 @@
     </footer>
 
     <script>
+      // Hamburger menu toggle
+      const navbar = document.querySelector(".navbar ul");
+      const hamburger = document.querySelector(".hamburger");
+
+      hamburger.addEventListener("click", () => {
+        navbar.classList.toggle("active");
+      });
+
+      // Review scroller functionality
       const reviewContainer = document.getElementById("reviews");
       const scroller = document.querySelector(".review-scroller");
       const totalReviews = 19;
@@ -253,7 +319,7 @@
       function loadReviews() {
         for (let i = 1; i <= totalReviews; i++) {
           const img = document.createElement("img");
-          img.src = `./contact/${i}.png`; // Corrected path to the reviews
+          img.src = `./contact/${i}.png`;
           img.alt = `Review ${i}`;
           reviewContainer.appendChild(img);
         }
