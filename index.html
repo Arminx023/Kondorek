@@ -1,9 +1,8 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="hu">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <title>Kondorék</title>
     <style>
       body {
@@ -77,47 +76,49 @@
         color: #333;
       }
 
+      /* --- HERO SECTION --- */
       .hero-section {
         position: relative;
         width: 100%;
-        height: 80vh;
-        min-height: 300px;
+        height: 85vh;
+        min-height: 400px;
         overflow: hidden;
-        background: linear-gradient(180deg, #4682b4 0%, #2f4f4f 100%);
       }
 
-      .hero-images {
-        position: relative;
-        width: 100%;
-        height: 100%;
-      }
-
-      .image-slide {
+      .hero-slide {
         position: absolute;
         width: 100%;
         height: 100%;
         opacity: 0;
-        transition: opacity 1s ease-in-out;
-        display: flex;
-        justify-content: center;
-        align-items: center;
+        transition: opacity 2s ease-in-out;
       }
 
-      .image-slide.active {
+      .hero-slide.active {
         opacity: 1;
       }
 
-      .image-slide img {
+      .hero-slide img {
         width: 100%;
         height: 100%;
         object-fit: cover;
-        transform: scale(0.85);
-        transition: transform 0.5s ease-in-out;
+        transform: scale(1.05);
+        transition: transform 8s ease-in-out;
         filter: brightness(60%);
       }
 
-      .image-slide.active img {
-        transform: scale(1);
+      .hero-slide.active img {
+        transform: scale(1.15);
+      }
+
+      /* Dark overlay over the images */
+      .hero-overlay {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.4);
+        z-index: 2;
       }
 
       .overlay-text {
@@ -128,7 +129,7 @@
         text-align: center;
         color: white;
         font-size: clamp(1.5rem, 5vw, 2.5rem);
-        z-index: 5;
+        z-index: 3;
         text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
       }
 
@@ -149,6 +150,7 @@
         background-color: #0056b3;
       }
 
+      /* --- ABOUT SECTION --- */
       .about-section {
         padding: 2rem 1rem;
         background: #fff;
@@ -177,42 +179,7 @@
         margin-bottom: 1rem;
       }
 
-      .what-we-do {
-        text-align: center;
-        padding: 2rem 1rem;
-        background: linear-gradient(180deg, #b0c4de 0%, #e0e7ef 100%);
-      }
-
-      .what-we-do h2 {
-        font-size: clamp(1.5rem, 4vw, 2.5rem);
-        color: #2f4f4f;
-        margin-bottom: 2rem;
-      }
-
-      .cards {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-        gap: 1rem;
-        padding: 0 1rem;
-      }
-
-      .card {
-        background-color: white;
-        padding: 2rem;
-        border-radius: 10px;
-        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-        transition: transform 0.3s ease-in-out;
-      }
-
-      .card:hover {
-        transform: scale(1.05);
-      }
-
-      .card h3 {
-        color: #007bff;
-        margin-bottom: 1rem;
-      }
-
+      /* --- FOOTER --- */
       .footer {
         background: #2f4f4f;
         color: #e0e7ef;
@@ -246,16 +213,10 @@
         margin-top: 1rem;
       }
 
-      .social-icons a {
-        display: inline-block;
-        transition: transform 0.3s ease, filter 0.3s ease;
-      }
-
       .social-icons img {
         width: clamp(30px, 8vw, 40px);
-        height: auto;
         filter: grayscale(100%);
-        transition: filter 0.3s ease;
+        transition: filter 0.3s ease, transform 0.3s ease;
       }
 
       .social-icons a:hover img {
@@ -263,7 +224,7 @@
         transform: scale(1.2);
       }
 
-      /* Media Queries */
+      /* --- MOBILE --- */
       @media (max-width: 768px) {
         .hamburger {
           display: block;
@@ -283,29 +244,9 @@
           display: flex;
         }
 
-        .navbar li {
-          margin: 10px 0;
-          text-align: center;
-        }
-
-        .hero-section {
-          height: 50vh;
-        }
-
-        .overlay-text {
-          font-size: 1.8rem;
-        }
-
-        .overlay-text button {
-          display: block;
-          width: 80%;
-          margin: 0.5rem auto;
-        }
-
         .about-section {
           flex-direction: column;
           text-align: center;
-          margin: 1rem;
         }
 
         .about-section img {
@@ -317,35 +258,10 @@
           width: 100%;
           padding: 0;
         }
-
-        .footer {
-          grid-template-columns: 1fr;
-        }
-      }
-
-      @media (max-width: 480px) {
-        nav a {
-          font-size: 1rem;
-        }
-
-        .overlay-text {
-          font-size: 1.2rem;
-        }
-
-        .card {
-          padding: 1rem;
-        }
-
-        .card h3 {
-          font-size: 1.2rem;
-        }
-
-        .footer h3 {
-          font-size: 1.2rem;
-        }
       }
     </style>
   </head>
+
   <body>
     <nav class="navbar">
       <button class="hamburger">☰</button>
@@ -353,47 +269,40 @@
         <li>
           <img src="KONDOREK_logo_colored.png" alt="Logo" class="nav-image" />
         </li>
+        <li><a href="index.html">Főoldal</a></li>
         <li><a href="services.html">Szolgáltatások</a></li>
         <li><a href="contact.html">Vélemények</a></li>
         <li><a href="reference.html">Referencia</a></li>
       </ul>
     </nav>
-
     <section class="hero-section">
-      <div class="hero-images">
-        <div class="image-slide active">
-          <img
-            src="./site/étkező.jpeg"
-            alt="Image 1"
-          />
-          <div class="overlay-text">
-            <h2>Profi festési szolgáltatások és gipszkartonszerelés</h2>
-            <button onclick="location.href='#about'">Rólunk</button>
-            <button onclick="location.href='services.html'">Szolgáltatások</button>
-          </div>
-        </div>
-        <div class="image-slide">
-          <img
-            src="./site/382181851_335582335710028_1348442266056205942_n.jpg"
-            alt="Image 2"
-          />
-          <div class="overlay-text">
-            <h2>Pofi festési szolgáltatások és gipszkartonszerelés</h2>
-            <button onclick="location.href='#about'">Rólunk</button>
-            <button onclick="location.href='#services'">Szolgáltatások</button>
-          </div>
-        </div>
-        <div class="image-slide">
-          <img
-            src="./site/20241206_140005.jpg"
-            alt="Image 3"
-          />
-          <div class="overlay-text">
-            <h2>Profi festési szolgáltatások és gipszkartonszerelés</h2>
-            <button onclick="location.href='#about'">Rólunk</button>
-            <button onclick="location.href='#services'">Szolgáltatások</button>
-          </div>
-        </div>
+      <div class="hero-overlay"></div>
+      <div class="hero-slide active">
+        <img src="./site/étkező.jpeg" alt="Image 1" />
+      </div>
+      <div class="hero-slide">
+        <img
+          src="./site/382181851_335582335710028_1348442266056205942_n.jpg"
+          alt="Image 2"
+        />
+      </div>
+      <div class="hero-slide">
+        <img src="./site/20241206_140005.jpg" alt="Image 3" />
+      </div>
+      <div class="hero-slide">
+        <img src="./site/1.jpg" alt="Image 4" />
+      </div>
+      <div class="hero-slide">
+        <img src="./site/22.jpg" alt="Image 5" />
+      </div>
+      <div class="hero-slide">
+        <img src="./site/6.jpg" alt="Image 6" />
+      </div>
+
+      <div class="overlay-text">
+        <h2>Profi festési szolgáltatások és gipszkartonszerelés</h2>
+        <button onclick="location.href='#about'">Rólunk</button>
+        <button onclick="location.href='services.html'">Szolgáltatások</button>
       </div>
     </section>
 
@@ -411,96 +320,57 @@
           anyagismeret és technika terén is. Munkafolyamatainkat a legmodernebb
           eszközökkel és gépekkel végezzük így a lehető legmagasabb színvonalat
           tudjuk nyújtani Megrendelőink részére. Nézd meg referencia munkáinkat
-          és inspirálodj a saját felújítási terveidhez!
-        </p>
-        <p>
-          2024-ben Elnyertem az "Év festője díjat" a Szobafestő-Mázoló-Tapétázó Országos Ipartestület által.
+          és inspirálodj a saját felújítási terveidhez! 2024-ben Elnyertem az
+          "Év festője díjat" a Szobafestő-Mázoló-Tapétázó Országos Ipartestület
+          által.
         </p>
       </div>
-      <img src="./site/c61fdb35-ad73-4314-9ac2-c49450ea1f86.jpg" alt="About" />
-    </section>
-
-    <section id="services" class="what-we-do">
-      <h2>Miért válasszon minket?</h2>
-      <div class="cards">
-        <div class="card">
-          <h3>Szakértelem</h3>
-          <p>
-            Több éves szakmai tapasztalattal rendelkezünk a szobafestés
-            területén, legyen szó lakossági, kereskedelmi vagy ipari
-            projektekről.
-          </p>
-        </div>
-        <div class="card">
-          <h3>Minőség</h3>
-          <p>
-            Piacon lévő legjobb minőségű festékeket és anyagokat használjuk,
-            hogy biztosítsuk a tartós és szemet gyönyörködtető végeredményt.
-          </p>
-        </div>
-        <div class="card">
-          <h3>Rugalmasság</h3>
-          <p>
-            Minden projekt egyedi, így szolgáltatásainkat teljes mértékben az Ön
-            igényeihez igazítjuk, legyen szó színsémáról, kivitelezési időről
-            vagy költségkeretről.
-          </p>
-        </div>
-      </div>
+      <img src="./site/szmtoi-2025-01757.jpg" alt="About" />
     </section>
 
     <footer class="footer">
       <div>
         <h3>Kapcsolat</h3>
-        <p>Kondorék</p>
         <p>Email: kondorek2022@gmail.com</p>
         <p>Phone: +36305624738</p>
         <div class="social-icons">
-          <a href="https://www.facebook.com/Kondorek2022" target="_blank">
-            <img src="./icons/59439.png" alt="Facebook" />
-          </a>
+          <a href="https://www.facebook.com/Kondorek2022" target="_blank"
+            ><img src="./icons/59439.png" alt="Facebook"
+          /></a>
           <a
             href="https://www.instagram.com/kondor_construction/"
             target="_blank"
-          >
-            <img src="./icons/1946552.png" alt="Instagram" />
-          </a>
+            ><img src="./icons/1946552.png" alt="Instagram"
+          /></a>
           <a
             href="https://www.tiktok.com/@kondorek_construction?lang=hu-HU"
             target="_blank"
-          >
-            <img src="./icons/3661391.png" alt="TikTok" />
-          </a>
+            ><img src="./icons/3661391.png" alt="TikTok"
+          /></a>
         </div>
       </div>
     </footer>
 
     <script>
-      const slides = document.querySelectorAll(".image-slide");
+      const slides = document.querySelectorAll(".hero-slide");
       let currentSlide = 0;
 
       function showSlide(index) {
         slides.forEach((slide, i) => {
-          slide.classList.remove("active");
-          if (i === index) {
-            slide.classList.add("active");
-          }
+          slide.classList.toggle("active", i === index);
         });
       }
 
-      function nextSlide() {
+      setInterval(() => {
         currentSlide = (currentSlide + 1) % slides.length;
         showSlide(currentSlide);
-      }
-
-      setInterval(nextSlide, 5000);
+      }, 6000);
 
       const navbar = document.querySelector(".navbar ul");
       const hamburger = document.querySelector(".hamburger");
-
-      hamburger.addEventListener("click", () => {
-        navbar.classList.toggle("active");
-      });
+      hamburger.addEventListener("click", () =>
+        navbar.classList.toggle("active")
+      );
     </script>
   </body>
 </html>
